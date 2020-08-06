@@ -10,6 +10,7 @@
 
 import cgi
 import cgitb
+import html
 import io
 import json
 import os
@@ -356,7 +357,7 @@ def on_get(credential):
   script_name = os.environ['SCRIPT_NAME'],
   headline_title = HEADLINE_TITLE,
   credential = credential,
-  note = note
+  note = html.escape(note)
 ).strip())
   print_footer()
 
