@@ -102,14 +102,15 @@ def print_header():
     <style>
 
 @font-face {{
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Medium"), local("YuGothic-Medium");
-}}
-
-@font-face {{
-  font-family: "Yu Gothic";
-  src: local("Yu Gothic Bold"), local("YuGothic-Bold");
-  font-weight: bold;
+  font-family: "Noto Sans Mono CJK JP";
+  src: url("https://cdn.jsdelivr.net/npm/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.woff2")              format("woff2"),
+       url("https://unpkg.com/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.woff2")                         format("woff2"),
+       url("https://cdn.jsdelivr.net/npm/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.woff")               format("woff"),
+       url("https://unpkg.com/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.woff")                          format("woff"),
+       url("https://cdn.jsdelivr.net/npm/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.otf")                format("opentype"),
+       url("https://unpkg.com/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.otf")                           format("opentype"),
+       url("https://cdn.jsdelivr.net/npm/@japanese-monospaced-fonts/noto-sans-mono-cjk-jp@1.0.1/NotoSansMonoCJKJP-Regular.otf") format("opentype"),
+       url("https://unpkg.com/@japanese-monospaced-fonts/noto-sans-mono-cjk-jp@1.0.1/NotoSansMonoCJKJP-Regular.otf")            format("opentype");
 }}
 
 *,
@@ -119,14 +120,13 @@ def print_header():
 }}
 
 html {{
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, YuGothic, "Yu Gothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Noto Sans Mono CJK JP", monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   text-decoration-skip-ink: none;
   -webkit-text-size-adjust: 100%;
   -webkit-text-decoration-skip: objects;
   word-break: break-all;
-  line-height: 1.5;
+  line-height: 1;
   background: #000;
-  -webkit-overflow-scrolling: touch;
   cursor: default;
 }}
 
@@ -183,6 +183,7 @@ h1 a:hover {{
   color: inherit;
   font-size: 1rem;
   font-family: inherit;
+  line-height: 1;
   background: transparent;
   outline: none;
 }}
@@ -264,6 +265,11 @@ document.addEventListener('DOMContentLoaded', () => {{
       return '保存されていない内容があります';
     }}
   }});
+  
+  const params = [...new URLSearchParams(location.search)].reduce((acc, pair) => ({{...acc, [pair[0]]: pair[1]}}), {{}});
+  if(params.height && !isNaN(params.height) && params.height > 0) {{
+    note.style.minHeight = note.style.height = params.height + 'px';
+  }}
   
   note.addEventListener('input', () => {{
     isEditted = note.value !== original;
