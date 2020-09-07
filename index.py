@@ -103,6 +103,14 @@ def print_header():
 
 @font-face {{
   font-family: "Noto Sans Mono CJK JP";
+  src: local("NotoSansMonoCJKjp-Regular"),
+       local("Noto Sans Mono CJK JP Regular"),
+       local("Noto Sans Mono CJK JP");
+  font-display: swap;
+}}
+
+@font-face {{
+  font-family: "Noto Sans Mono CJK JP Web";
   src: url("https://cdn.jsdelivr.net/npm/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.woff2")              format("woff2"),
        url("https://unpkg.com/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.woff2")                         format("woff2"),
        url("https://cdn.jsdelivr.net/npm/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.woff")               format("woff"),
@@ -111,6 +119,7 @@ def print_header():
        url("https://unpkg.com/@neos21/japanese-monospaced-fonts@1.0.2/NotoSansMonoCJKjp-Regular.otf")                           format("opentype"),
        url("https://cdn.jsdelivr.net/npm/@japanese-monospaced-fonts/noto-sans-mono-cjk-jp@1.0.1/NotoSansMonoCJKJP-Regular.otf") format("opentype"),
        url("https://unpkg.com/@japanese-monospaced-fonts/noto-sans-mono-cjk-jp@1.0.1/NotoSansMonoCJKJP-Regular.otf")            format("opentype");
+  font-display: swap;
 }}
 
 *,
@@ -120,7 +129,7 @@ def print_header():
 }}
 
 html {{
-  font-family: "Noto Sans Mono CJK JP", monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Noto Sans Mono CJK JP", "Courier New", monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   text-decoration-skip-ink: none;
   -webkit-text-size-adjust: 100%;
   -webkit-text-decoration-skip: objects;
@@ -128,6 +137,10 @@ html {{
   line-height: 1;
   background: #000;
   cursor: default;
+}}
+
+html.loaded {{
+  font-family: "Noto Sans Mono CJK JP", "Noto Sans Mono CJK JP Web", "Courier New", monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }}
 
 html,
@@ -200,7 +213,7 @@ h1 a:hover {{
   grid-area: note;
   border-top: 1px solid #0c0;
   padding: .25rem;
-  min-height: 320px;  /* Optimized For iPhone */
+  min-height: 340px;  /* Optimized For iPhone */
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   resize: vertical;
@@ -315,6 +328,12 @@ document.addEventListener('DOMContentLoaded', () => {{
         message.innerHTML = `<strong class="error">Error : ${{error}}</strong>`;
         saveBtn.disabled = false;
       }})
+  }});
+  
+  window.addEventListener('load', () => {{
+    setTimeout(() => {{
+      document.getElementsByTagName('html')[0].classList.add('loaded');
+    }}, 1);
   }});
 }});
 
