@@ -96,7 +96,6 @@ def print_header():
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{page_title}</title>
     <style>
