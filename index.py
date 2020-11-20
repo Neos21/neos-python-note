@@ -37,7 +37,7 @@ PAGE_TITLE = '&#65279;'
 # 見出しに指定するタイトル
 HEADLINE_TITLE = "Neo's Python Note"
 # 見出しに指定するリンク URL
-HEADLINE_URL = 'http://neo.s21.xrea.com/'
+HEADLINE_URL = 'https://neos21.net/'
 
 
 # メイン処理
