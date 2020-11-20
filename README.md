@@ -2,8 +2,6 @@
 
 Python 製のオレオレノート。
 
-- __[Example](http://35.197.103.64/note.py)__ (管理人しか使えません)
-
 
 ## 機能
 
@@ -53,16 +51,6 @@ URL に `credential` パラメータを指定してアクセスすると、ノ�
 管理者用画面では、ノートの参照・編集・保存が行える。
 
 
-## Author
-
-[Neo](http://neo.s21.xrea.com/)
-
-
 ## Links
 
-- [Neo's World](http://neo.s21.xrea.com/)
-- [Corredor](https://neos21.hatenablog.com/)
-- [Murga](https://neos21.hatenablog.jp/)
-- [El Mylar](https://neos21.hateblo.jp/)
-- [Neo's GitHub Pages](https://neos21.github.io/)
-- [GitHub - Neos21](https://github.com/Neos21/)
+- [Neo's World](https://neos21.net/)
