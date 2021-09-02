@@ -4,7 +4,7 @@
 # ======================================================================
 # Neo's Python Note
 #
-# Neo (@Neos21) https://neos21.net/
+# Neo https://neos21.net/
 # ======================================================================
 
 
@@ -33,9 +33,9 @@ CREDENTIAL_FILE_NAME = 'credential.txt'
 # ノートファイル : テキストを記録するファイル名
 NOTE_FILE_NAME = 'note.txt'
 # title 要素に指定するタイトル
-PAGE_TITLE = '&#65279;'
+PAGE_TITLE = 'Neo\'s Python Note'
 # 見出しに指定するタイトル
-HEADLINE_TITLE = "Neo's Python Note"
+HEADLINE_TITLE = 'Neo\'s Python Note'
 # 見出しに指定するリンク URL
 HEADLINE_URL = 'https://neos21.net/'
 
@@ -97,7 +97,9 @@ def print_header():
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
     <title>{page_title}</title>
+    <link rel="icon" href="/favicon.ico">
     <style>
 
 @font-face {{
@@ -128,12 +130,13 @@ def print_header():
 }}
 
 html {{
+  height: 100%;
   font-family: "Noto Sans Mono CJK JP", "Courier New", monospace, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   text-decoration-skip-ink: none;
   -webkit-text-size-adjust: 100%;
   -webkit-text-decoration-skip: objects;
   word-break: break-all;
-  line-height: 1;
+  line-height: 1.05;
   background: #000;
   cursor: default;
 }}
@@ -148,6 +151,7 @@ a {{
 }}
 
 body {{
+  height: 100%;
   margin: 0;
 }}
 
@@ -167,20 +171,31 @@ h1 a:hover {{
   display: grid;
   grid-template: "title message save" auto
                  "note  note    note" 1fr
-                 / auto 1fr     auto;
+                 / auto 1fr     1fr;
   border: 1px solid #0c0;
+}}
+
+@media(min-width: 940px) {{
+  #form {{
+    height: calc(100% - 1px);
+  }}
+  
+  #note {{
+    resize: none !important;
+  }}
 }}
 
 #title {{
   grid-area: title;
   margin: 0;
-  padding: 0 1rem 0 .25rem;
+  padding: .5rem 1rem .5rem .25rem;
   white-space: nowrap;
 }}
 
 #message {{
   grid-area: message;
   border-right: 1px solid #0c0;
+  padding: .5rem 0;
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -202,6 +217,8 @@ h1 a:hover {{
 
 #save-btn {{
   grid-area: save;
+  padding: .5rem 3rem;
+  cursor: pointer;
 }}
 
 #save-btn:disabled {{
@@ -212,7 +229,8 @@ h1 a:hover {{
   grid-area: note;
   border-top: 1px solid #0c0;
   padding: .25rem;
-  min-height: 340px;  /* Optimized For iPhone */
+  height: 100%;
+  min-height: 300px;  /* Optimized For iPhone */
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   resize: vertical;
